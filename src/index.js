@@ -1,3 +1,3 @@
-export * from "./current_user";
+export * from "./current_user.js";
 
-export * from "./user_authorization ";
+export * from "./user_authorization.js";
