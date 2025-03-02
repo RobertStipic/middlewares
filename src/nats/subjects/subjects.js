@@ -3,5 +3,6 @@ module.exports = {
     SubscriptionCreated: "subscription:created",
     SubscriptionUpdated: "subscription:updated",
     PaymentCompleted: "payment:completed",
+    PaymentExpirationCompleted: "payment-expiration:completed",
   }),
 };
