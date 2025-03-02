@@ -1,5 +1,6 @@
 import { connect } from "nats";
-import { Subjects } from "./subjects/subjects.js";
+import pkg from "./subjects/subjects.js";
+const { Subjects } = pkg;
 
 export class NatsWrapper {
   _client;
