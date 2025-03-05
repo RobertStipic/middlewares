@@ -1,10 +1,6 @@
 {
   "name": "@robstipic/middlewares",
-<<<<<<< HEAD
-  "version": "1.0.14",
-=======
   "version": "1.0.15",
->>>>>>> 836d37c (added subscriptionExpired subject)
   "main": "./src/index.js",
   "files": [
     "src/**/*"
