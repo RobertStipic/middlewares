@@ -7,5 +7,6 @@ module.exports = {
     PaymentCompleted: "payment:completed",
     PaymentExpirationCompleted: "payment-expiration:completed",
     MoviePlayed: "movie:played",
+    MovieRecommendation: "movie-played:recommendation",
   }),
 };
