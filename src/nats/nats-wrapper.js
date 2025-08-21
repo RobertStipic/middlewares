@@ -34,7 +34,7 @@ export class NatsWrapper {
       const subjects = Object.values(Subjects).map(
         (subject) => `vodapp.${subject}`
       );
-      await this.createStreamIfNotExists("VODAPP", subjects);
+      await this.createStreamIfNotExists(Subjects.StreamName, subjects);
       this._jsClient = this.client.jetstream();
       console.log("Successfully connected to NATS and initialized JetStream.");
     } catch (err) {
@@ -66,23 +66,23 @@ export class NatsWrapper {
       throw new Error("JetStream client not connected");
     }
 
-    const timeout = 10000;
+    const timeout = options.timeout || 15000;
     
     try {
       const response = await this._client.request(
         subject,
-        this._jsonCodec.encode(data),
+        this.jsonCodec.encode(data),
         { timeout }
       );
       
-      return this._jsonCodec.decode(response.data);
+      return this.jsonCodec.decode(response.data);
     } catch (error) {
       console.error("JetStream request failed:", error);
       throw error;
     }
   }
 
-    // DODANA METODA ZA KREIRANJE CONSUMERA
+    
   async createConsumer(streamName, durableName, subjectFilter) {
     const jsm = await this.client.jetstreamManager();
     
@@ -92,15 +92,13 @@ export class NatsWrapper {
         ack_policy: "explicit",
         filter_subject: subjectFilter,
         deliver_policy: "all",
-        ack_wait: 30000000000,
+        ack_wait: 30000,
       });
-      console.log(`Consumer ${durableName} created for stream ${streamName}`);
+      console.log(`Consumer ${durableName} created for stream ${streamName} listening for for subject ${subjectFilter}`);
     } catch (err) {
-      if (err.code === '10058') { // Consumer već postoji
+      if (err.code === '10058') { 
         console.log(`Consumer ${durableName} already exists`);
-      } else {
-        throw err;
-      }
+      } 
     }
   }
   close() {
