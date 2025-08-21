@@ -1,4 +1,4 @@
-import { consumerOpts } from "nats";
+import { consumerOpts,JSONCodec } from "nats";
 
 export class Listener {
   constructor(jsClient, subject, queueGroupName) {
@@ -6,11 +6,21 @@ export class Listener {
     this.ackWait = 5000;
     this.subject = subject;
     this.queueGroupName = queueGroupName;
+    this.jsonCodec = JSONCodec();
     if (!this.subject) throw new Error("Subject must be defined");
     if (!this.queueGroupName) throw new Error("Queue group must be defined");
     if (!this.onMessage) throw new Error("onMessage handler must be defined");
   }
-
+  async respond(msg, responseData) {
+    try {
+      if (msg.reply) {
+        await msg.respond(this.jsonCodec.encode(responseData));
+        console.log(`Response sent for ${this.subject}`);
+      }
+    } catch (error) {
+      console.error('Error sending consumer response:', error);
+    }
+  }  
   subscriptionOptions() {
     return consumerOpts()
       .manualAck()
