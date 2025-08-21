@@ -9,5 +9,6 @@ module.exports = {
     MoviePlayed: "movie:played",
     MovieRecommendation: "movie-played:recommendation",
     UserAuth: "user:auth",
+    SubscriptionStatus: "subscription:status",
   }),
 };
