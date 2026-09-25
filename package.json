@@ -1,6 +1,6 @@
 {
   "name": "@robstipic/middlewares",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "main": "./src/index.js",
   "files": [
     "src/**/*"

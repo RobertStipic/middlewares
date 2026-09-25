@@ -11,16 +11,7 @@ export class Listener {
     if (!this.queueGroupName) throw new Error("Queue group must be defined");
     if (!this.onMessage) throw new Error("onMessage handler must be defined");
   }
-async respond(msg, responseData) {
-    try {
-      if (msg.reply) {
-        await msg.respond(this.jsonCodec.encode(responseData));
-        console.log(`Response sent for ${this.subject}`);
-      } 
-    } catch (error) {
-      console.error("Error sending consumer response:", error);
-    }
-  }
+  
   subscriptionOptions() {
     return consumerOpts()
       .manualAck()
