@@ -10,6 +10,9 @@ module.exports = {
     MovieRecommendation: "movie-played:recommendation",
     UserAuth: "user:auth",
     AccountDeleted: "account:deleted",
-    StreamName: "VODAPP"
+    MovieUploaded: "movie:uploaded",
+    MovieTranscoded: "movie:transcoded",
+    MovieDeleted: "movie:deleted",
+    StreamName: "VODAPP",
   }),
 };
