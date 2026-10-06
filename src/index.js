@@ -1,5 +1,6 @@
 export * from "./current_user.js";
 export * from "./user_authorization.js";
+export * from "./admin_authorization.js";
 
 export * from "./nats/nats-wrapper.js";
 
