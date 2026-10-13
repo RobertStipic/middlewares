@@ -1,6 +1,5 @@
 import { connect, JSONCodec } from "nats";
-import pkg from "./subjects/subjects.js";
-const { Subjects } = pkg;
+import { Subjects } from "./subjects/subjects.js";
 
 export class NatsWrapper {
   _client;
@@ -20,16 +19,15 @@ export class NatsWrapper {
     }
     return this._jsClient;
   }
-    get jsonCodec() {
+  get jsonCodec() {
     return this._jsonCodec;
   }
-
 
   async connect(url) {
     try {
       this._client = await connect({ servers: [url] });
       const subjects = Object.values(Subjects).map(
-        (subject) => `vodapp.${subject}`
+        (subject) => `vodapp.${subject}`,
       );
       await this.createStreamIfNotExists(Subjects.StreamName, subjects);
       this._jsClient = this.client.jetstream();
@@ -44,7 +42,7 @@ export class NatsWrapper {
     const jsm = await this.client.jetstreamManager();
     const streams = await jsm.streams.list().next();
     const streamExists = streams.some(
-      (stream) => stream.config.name === streamName
+      (stream) => stream.config.name === streamName,
     );
 
     if (!streamExists) {
