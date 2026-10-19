@@ -17,7 +17,7 @@ export const currentUser = (req, res, next) => {
     const payload = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
     req.currentUser = payload;
   } catch (err) {
-    res.status(401).send("Invalid token");
+    return res.status(401).send("Invalid token");
   }
   next();
 };

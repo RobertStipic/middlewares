@@ -12,5 +12,7 @@ export const Subjects = Object.freeze({
   MovieUploaded: "movie:uploaded",
   MovieTranscoded: "movie:transcoded",
   MovieDeleted: "movie:deleted",
+  UserPasswordReset: "user:password-reset",
+  UserAccountActivated: "user:account-activated",
   StreamName: "VODAPP",
 });
