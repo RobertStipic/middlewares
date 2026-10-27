@@ -14,5 +14,8 @@ export const Subjects = Object.freeze({
   MovieDeleted: "movie:deleted",
   UserPasswordReset: "user:password-reset",
   UserAccountActivated: "user:account-activated",
+  SubscriptionAdminCreated: "subscription:admin-created",
+  SubscriptionAdminExtended: "subscription:admin-extended",
+  MovieUpdated: "movie:updated",
   StreamName: "VODAPP",
 });
