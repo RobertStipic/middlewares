@@ -17,5 +17,6 @@ export const Subjects = Object.freeze({
   SubscriptionAdminCreated: "subscription:admin-created",
   SubscriptionAdminExtended: "subscription:admin-extended",
   MovieUpdated: "movie:updated",
+  AdminActionLogged: "admin:action-logged",
   StreamName: "VODAPP",
 });

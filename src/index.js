@@ -6,5 +6,7 @@ export * from "./nats/nats-wrapper.js";
 
 export * from "./nats/events/listener.js";
 export * from "./nats/events/publisher.js";
+export * from "./nats/events/responder.js";
+export * from "./nats/events/requester.js";
 
 export * from "./nats/subjects/subjects.js";
